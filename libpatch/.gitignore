@@ -1,0 +1,11 @@
+build/
+.vscode
+*.gba
+*.gb
+*.zip
+*.ips
+*.ups
+*.bps
+*.sav
+*.state*
+.cache
