@@ -48,7 +48,8 @@ int main(int argc, char **argv) {
 
     char* src_path = NULL;
     char* patch_path = NULL;
-    char* out_path = NULL;
+    // TODO: properly make a pretty outpath if -o not supplied
+    char* out_path = "patched.gba";
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "-h") == 0) {
             show_help();
@@ -100,9 +101,6 @@ int main(int argc, char **argv) {
     fclose(fpatch);
 
     // Apply patch
-    // TODO: properly make a pretty outpath if -o not supplied
-    out_path = "patched.gba";
-
     FILE *fout = fopen(out_path, "wb");
     if (fout == NULL) {
         printf("error opening %s\n", out_path);
