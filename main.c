@@ -117,5 +117,8 @@ int main(int argc, char **argv) {
     fclose(fout);
     printf("Successfully created %s\n", out_path);
 
+    free(src_buf);
+    free(patch_buf);
+    free((void*)out_buf);
     return 0;
 }
