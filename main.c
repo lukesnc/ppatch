@@ -100,7 +100,7 @@ int main(int argc, char **argv) {
     fclose(fpatch);
 
     // Apply patch
-    // TODO: properly make a pretty outpath if -o not supploed
+    // TODO: properly make a pretty outpath if -o not supplied
     out_path = "patched.gba";
 
     FILE *fout = fopen(out_path, "wb");
