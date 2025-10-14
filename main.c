@@ -18,10 +18,12 @@ uint8_t* apply_patch(
 ) {
     enum PatchType type;
     if (PatchError_OK != patch_get_type(&type, patch_data, patch_size)) {
+        printf("error: could not identify patch type\n");
         return NULL;
     }
 
     if (PatchError_OK != patch_get_size(type, &out_size, src_size, patch_data, patch_size)) {
+        printf("error: bad patch size\n");
         return NULL;
     }
 
@@ -31,7 +33,7 @@ uint8_t* apply_patch(
     }
 
     if (PatchError_OK != patch_apply(type, out, out_size, src_data, src_size, patch_data, patch_size)) {
-        free(out);
+        // free(out);
         return NULL;
     }
 
