@@ -7,7 +7,7 @@
 
 void show_help() {
     printf("usage: ppatch [-h] [-o OUT_FILE] ROM_FILE PATCH_FILE\n");
-    printf("  -o  Override default output file path. Default path is \"./patch_name.romtype\"\n");
+    printf("  -o  Override default output file path: patch_name.[gba|gbc|gb]\n");
     printf("  -h  Show this message and exit\n");
 }
 
