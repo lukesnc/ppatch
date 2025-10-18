@@ -109,7 +109,7 @@ int main(int argc, char **argv) {
         return 1;
     } 
 
-    const uint8_t* out_buf = apply_patch(src_buf, src_size, patch_buf, patch_size, src_size);
+    uint8_t* out_buf = apply_patch(src_buf, src_size, patch_buf, patch_size, src_size);
     if (out_buf == NULL) {
         printf("error: apply_patch failed\n");
         return 1;
@@ -121,6 +121,6 @@ int main(int argc, char **argv) {
 
     free(src_buf);
     free(patch_buf);
-    free((void*)out_buf);
+    free(out_buf);
     return 0;
 }
