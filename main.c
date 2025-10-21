@@ -29,11 +29,13 @@ uint8_t* apply_patch(
 
     uint8_t* out = malloc(out_size);
     if (!out) {
+        printf("error: apply_patch malloc\n");
         return NULL;
     }
 
     if (PatchError_OK != patch_apply(type, out, out_size, src_data, src_size, patch_data, patch_size)) {
         // free(out);
+        printf("error: patching failed or bad patch type\n");
         return NULL;
     }
 
@@ -73,6 +75,10 @@ int main(int argc, char **argv) {
             }
         }
     }
+    if (!src_path || !patch_path) {
+        printf("error: rom path and patch path is required\n");
+        return 1;
+    }
     
     // Read base game
     FILE *fsrc = fopen(src_path, "rb");
@@ -111,7 +117,6 @@ int main(int argc, char **argv) {
 
     uint8_t* out_buf = apply_patch(src_buf, src_size, patch_buf, patch_size, src_size);
     if (out_buf == NULL) {
-        printf("error: apply_patch failed\n");
         return 1;
     }
     
