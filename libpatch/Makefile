@@ -6,7 +6,8 @@ SRC += $(wildcard ./src/common/*.c)
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -std=c99 -c
+.PHONY: all
+all: libpatch.a
 
 libpatch.a: $(OBJ)
 	ar rcs $@ $^
