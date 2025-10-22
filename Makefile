@@ -1,7 +1,8 @@
-CFLAGS = -Wall -Wextra -L./libpatch/ -lpatch
+CFLAGS = -Wall -Wextra
+LIBS = -Llibpatch -lpatch
 
 .PHONY: all
 all: ppatch
 
 ppatch: main.c
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
