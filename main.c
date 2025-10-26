@@ -6,9 +6,9 @@
 #include "libpatch/src/patch.h"
 
 void show_help() {
-    printf("usage: ppatch [-h] [-o OUT_FILE] ROM_FILE PATCH_FILE\n");
-    printf("  -o  Override default output file path: patch_name.[gba|gbc|gb]\n");
-    printf("  -h  Show this message and exit\n");
+    printf("usage: ppatch [-h] [-o OUT_FILE] ROM_FILE PATCH_FILE\n"
+           "  -o  Override default output file path: patch_name.[gba|gbc|gb]\n"
+           "  -h  Show this message and exit\n");
 }
 
 uint8_t* apply_patch(
@@ -22,7 +22,8 @@ uint8_t* apply_patch(
         return NULL;
     }
 
-    if (PatchError_OK != patch_get_size(type, &out_size, src_size, patch_data, patch_size)) {
+    if (PatchError_OK != patch_get_size(type, &out_size, src_size, patch_data,
+                                        patch_size)) {
         printf("error: bad patch size\n");
         return NULL;
     }
@@ -33,7 +34,8 @@ uint8_t* apply_patch(
         return NULL;
     }
 
-    if (PatchError_OK != patch_apply(type, out, out_size, src_data, src_size, patch_data, patch_size)) {
+    if (PatchError_OK != patch_apply(type, out, out_size, src_data, src_size,
+                                     patch_data, patch_size)) {
         // free(out);
         printf("error: patching failed or bad patch type\n");
         return NULL;
@@ -115,7 +117,8 @@ int main(int argc, char **argv) {
         return 1;
     } 
 
-    uint8_t* out_buf = apply_patch(src_buf, src_size, patch_buf, patch_size, src_size);
+    uint8_t* out_buf = apply_patch(src_buf, src_size, patch_buf,
+                                   patch_size, src_size);
     if (out_buf == NULL) {
         return 1;
     }
